@@ -1,8 +1,13 @@
-# AEALSF – Adaptive Edge-Assisted Lightweight Security Framework for Resource-Constrained IoT Devices
+# AEALSF – Adaptive Edge-Assisted Lightweight Security Framework
 
-**Project:** AEALSF – Adaptive Edge-Assisted Lightweight Security Framework  
-**Team:** Team 12  
-**Team Members:** B. Nithin Ramgopal (`CS23B2050`) | N. Ravi Tejesh (`CS23B2051`) | N. Durga Prasad (`CS23B2052`)
+**Project:** Adaptive Edge-Assisted Lightweight Security Framework (AEALSF)  
+**Team:** Team 12
+
+**Team Members:**
+
+- B. Nithin Ramgopal (`CS23B2050`)
+- N. Ravi Tejesh (`CS23B2051`)
+- N. Durga Prasad (`CS23B2052`)
 
 ---
 
@@ -18,7 +23,7 @@ The project provides a software-based experimental environment for evaluating th
 
 ## 2. Key Features
 
-- **Adaptive Decision Engine:** Evaluates resource availability and execution costs to determine task execution strategies.
+- **Adaptive Decision Engine:** Evaluates resource availability and execution costs to determine suitable task execution strategies.
 - **Edge-Assisted Execution:** Supports task delegation and execution through edge nodes.
 - **Lightweight Cryptography:** Implements encryption, key management, and cryptographic verification.
 - **NIZK Authentication:** Provides a non-interactive zero-knowledge authentication mechanism.
@@ -58,23 +63,21 @@ The framework is organized into the following major components:
 
 ## 4. Project Directory Structure
 
+The main project structure is:
+
 ```text
-Team_12_Final_Submission/
+Team-12_Source_Codes/
 │
-├── README.md
 ├── .env.example
 ├── .gitignore
 ├── requirements.txt
 ├── Dockerfile
 ├── docker-compose.yml
 ├── cli.py
+├── AEALSF_Raw_Experimental_Results.csv
+├── AEALSF_Experimental_Summary.csv
 │
 ├── adaptive_engine/
-│   ├── cost_estimator.py
-│   ├── decision_engine.py
-│   ├── execution_scheduler.py
-│   ├── policy_manager.py
-│   └── resource_analyzer.py
 │
 ├── api/
 │   ├── main.py
@@ -89,60 +92,47 @@ Team_12_Final_Submission/
 │
 ├── device/
 │
+├── docs/
+│
 ├── edge/
-│
-├── monitoring/
-│
-├── smart_contracts/
-│   ├── Algorithm1.circom
-│   ├── DeviceRegistry.sol
-│   ├── SecurityManager.sol
-│   ├── TaskManagement.sol
-│   ├── c_sdk_generator.py
-│   └── generated_c_sdk/
 │
 ├── experiments/
 │
-├── tests/
+├── monitoring/
 │
-├── docs/
-│   ├── Architecture.md
-│   ├── Experimental_Setup.md
-│   ├── Experimental_results.md
-│   ├── Implementation.md
-│   ├── Limitations.md
-│   ├── Methodology.md
-│   ├── Readme.md
-│   └── Results_and_Analysis.md
+├── results/
+│   ├── figures/
+│   └── tables/
 │
-└── results/
-    ├── benchmark_results.json
-    ├── benchmark_summary.csv
-    ├── raw_trials.csv
-    ├── raw_trials.json
-    ├── statistical_analysis.csv
-    ├── sensitivity_analysis.csv
-    ├── validation_pipeline_report.json
-    ├── figures/
-    └── tables/
+├── smart_contracts/
+│
+└── tests/
 ```
 
-The directory listing above highlights the major project components. Retain the complete source files and generated experimental outputs in their respective directories.
+The folders contain the implementation modules, experimental scripts, documentation, test cases, and generated research outputs.
+
+The `results/figures/` directory contains experimental graphs, while `results/tables/` contains tabulated results.
+
+The root-level CSV files contain experimental records and summary data.
 
 ## 5. Technologies Used
 
-- **Programming Language:** Python 3.11
-- **API Framework:** FastAPI
-- **Data Validation:** Pydantic
-- **Cryptographic Operations:** Python Cryptography Library
-- **Numerical Computing:** NumPy and SciPy
-- **Symbolic Computation:** SymPy
-- **Data Analysis:** Pandas
-- **Visualization:** Matplotlib
-- **Smart Contracts:** Solidity
-- **Zero-Knowledge Circuit:** Circom
-- **Containerization:** Docker and Docker Compose
-- **Testing:** Python unittest framework
+| Technology     | Purpose                               |
+| -------------- | ------------------------------------- |
+| Python 3.11    | Main programming language             |
+| FastAPI        | API development                       |
+| Pydantic       | Data validation                       |
+| Cryptography   | Cryptographic operations              |
+| NumPy          | Numerical computing                   |
+| SciPy          | Scientific computing                  |
+| SymPy          | Symbolic computation                  |
+| Pandas         | Data analysis                         |
+| Matplotlib     | Data visualization                    |
+| Solidity       | Smart contract implementation         |
+| Circom         | Zero-knowledge circuit implementation |
+| Docker         | Containerization                      |
+| Docker Compose | Multi-service execution               |
+| unittest       | Software testing                      |
 
 ## 6. System Requirements
 
@@ -150,27 +140,33 @@ Recommended environment:
 
 - Python 3.11
 - pip package manager
+- Git
 - Docker Desktop (for containerized execution)
-- Git (optional, for version control)
 - Windows, Linux, or macOS
 
 Some cryptographic acceleration components may be platform-dependent. The supplied `_secp256k1_accel.so` file is intended for compatible Linux environments. On other platforms, the Python fallback implementation may be used.
 
 ## 7. Installation and Setup
 
-### Step 1: Extract the Project
+### Step 1: Clone the Repository
 
-Extract the submitted project ZIP file.
+```bash
+git clone https://github.com/Ravitejeshnagasarapu/AEALSF-Adaptive-Edge-Assisted-Lightweight-Security-Framework.git
+```
 
-Open a terminal or PowerShell window inside the project directory.
+### Step 2: Navigate to the Project Directory
 
-### Step 2: Create a Virtual Environment
+```bash
+cd AEALSF-Adaptive-Edge-Assisted-Lightweight-Security-Framework
+```
+
+### Step 3: Create a Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate the environment.
+### Step 4: Activate the Virtual Environment
 
 **Windows PowerShell:**
 
@@ -184,14 +180,14 @@ Activate the environment.
 source venv/bin/activate
 ```
 
-### Step 3: Install Dependencies
+### Step 5: Install Dependencies
 
 ```bash
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### Step 4: Configure Environment Variables
+### Step 6: Configure Environment Variables
 
 Copy `.env.example` to `.env` if environment-specific configuration is required.
 
@@ -249,6 +245,8 @@ python cli.py ddos-eval
 python cli.py generate-c-sdk
 ```
 
+Run only the commands supported by the current project configuration.
+
 ## 9. Running the API
 
 Start the FastAPI application using:
@@ -269,13 +267,13 @@ The API provides endpoints for the framework's supported device, edge, task, blo
 
 The project includes a `Dockerfile` and `docker-compose.yml` for containerized execution.
 
-Build and start the configured services:
+### Build and Start Services
 
 ```bash
 docker compose up --build
 ```
 
-To stop the services:
+### Stop Services
 
 ```bash
 docker compose down
@@ -324,11 +322,7 @@ No physical Raspberry Pi, ESP32, Fibocom L610-CN device, or hardware power meter
 
 Consequently, simulated resource values and analytical energy estimates should not be presented as direct physical hardware measurements.
 
-Other implementation limitations and experimental assumptions are described in:
-
-- `docs/Limitations.md`
-- `docs/Experimental_Setup.md`
-- `docs/Methodology.md`
+Other implementation limitations and experimental assumptions are described in the project documentation.
 
 ## 13. Test and Validation
 
@@ -346,7 +340,7 @@ The project contains test modules covering:
 - NIZK authentication
 - Security functionality
 
-Run the complete test suite before final submission:
+Run the complete test suite using:
 
 ```bash
 python -m unittest discover -s tests -v
@@ -358,35 +352,36 @@ Record the actual test results from the final execution environment. Do not repo
 
 Additional technical and research documentation is available under the `docs/` directory.
 
-| Document                  | Description                                |
-| ------------------------- | ------------------------------------------ |
-| `Architecture.md`         | Framework architecture                     |
-| `Experimental_Setup.md`   | Experimental environment and configuration |
-| `Experimental_results.md` | Experimental results                       |
-| `Implementation.md`       | Implementation details                     |
-| `Limitations.md`          | Known limitations                          |
-| `Methodology.md`          | Research methodology                       |
-| `Readme.md`               | Existing project documentation             |
-| `Results_and_Analysis.md` | Result interpretation and analysis         |
+The documentation includes:
+
+- `Architecture.md` – Framework architecture.
+- `Experimental_Setup.md` – Experimental environment and configuration.
+- `Experimental_results.md` – Experimental results.
+- `Implementation.md` – Implementation details.
+- `Limitations.md` – Known limitations.
+- `Methodology.md` – Research methodology.
+- `Readme.md` – Additional project documentation.
+- `Results_and_Analysis.md` – Result interpretation and analysis.
 
 ## 15. Reproducibility
 
 To reproduce the documented software experiments:
 
 1. Install Python 3.11.
-2. Create and activate a virtual environment.
-3. Install the dependencies from `requirements.txt`.
-4. Configure the required environment variables.
-5. Run the test suite.
-6. Execute the relevant experiment through `cli.py`.
-7. Inspect the generated outputs in `results/`.
-8. Compare the generated data with the supplied experimental records.
+2. Clone the repository.
+3. Create and activate a virtual environment.
+4. Install dependencies from `requirements.txt`.
+5. Configure the required environment variables.
+6. Run the test suite.
+7. Execute the relevant experiment through `cli.py`.
+8. Inspect the generated outputs in `results/`.
+9. Compare the generated data with the supplied experimental records.
 
 For accurate comparisons, use the experimental configuration, seeds, and assumptions documented in the research materials.
 
 ## 16. Security and Configuration Notes
 
-- Never include actual `.env` files containing secrets in the submission.
+- Never include actual `.env` files containing secrets in the repository.
 - Use `.env.example` to document required configuration variables.
 - Do not distribute private keys or credentials.
 - Retain the cryptographic source code and required generated SDK files.
@@ -395,21 +390,21 @@ For accurate comparisons, use the experimental configuration, seeds, and assumpt
 
 ## 17. Final Submission Contents
 
-The final submission should contain:
+The project repository includes the following major deliverables:
 
-- Complete Python source code.
+- Python source code.
 - API and configuration modules.
 - Adaptive engine, device, and edge components.
 - Cryptographic and blockchain simulation modules.
-- Smart contracts and required generated C SDK files.
+- Smart contracts and generated C SDK files.
 - Experimental scripts.
-- Complete test suite.
+- Test suite.
 - Experimental raw data and processed results.
 - Figures and tables.
 - Research documentation.
 - Dependency and Docker configuration files.
-- This root-level README.
-- The final IEEE research paper as a separate submission file, if required by the institution.
+
+The final IEEE research paper should be included as a separate submission file if required by the institution.
 
 ## 18. Conclusion
 
@@ -422,6 +417,3 @@ The source code, experimental scripts, validation outputs, and documentation are
 ---
 
 **Team 12 – AEALSF Research Project**
-#   A E A L S F - A d a p t i v e - E d g e - A s s i s t e d - L i g h t w e i g h t - S e c u r i t y - F r a m e w o r k . 
- 
- 
