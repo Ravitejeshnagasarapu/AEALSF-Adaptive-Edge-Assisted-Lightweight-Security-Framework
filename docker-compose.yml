@@ -1,0 +1,71 @@
+version: "3.9"
+
+services:
+  aealsf-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aealsf-control-plane
+    ports:
+      - "8000:8000"
+    environment:
+      - AEALSF_ENV=production
+      - AEALSF_LOG_LEVEL=INFO
+      - AEALSF_NIZK_PRIME_BITS=2048
+      - AEALSF_BLOCKCHAIN_NODES=node0,node1,node2,node3
+      - AEALSF_EDGE_CLUSTER_NODES=edge-node-0,edge-node-1,edge-node-2
+    depends_on:
+      - bcos-node0
+      - bcos-node1
+      - bcos-node2
+      - bcos-node3
+      - edge-node-0
+      - edge-node-1
+
+  edge-node-0:
+    image: python:3.11-slim
+    container_name: aealsf-edge-0
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: python3 -m edge.edge_server --node-id edge-node-0 --port 8100
+
+  edge-node-1:
+    image: python:3.11-slim
+    container_name: aealsf-edge-1
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: python3 -m edge.edge_server --node-id edge-node-1 --port 8101
+
+  bcos-node0:
+    image: python:3.11-slim
+    container_name: fisco-bcos-dvrc-node0
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: python3 -m blockchain.blockchain_client --node-id node0
+
+  bcos-node1:
+    image: python:3.11-slim
+    container_name: fisco-bcos-dvrc-node1
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: python3 -m blockchain.blockchain_client --node-id node1
+
+  bcos-node2:
+    image: python:3.11-slim
+    container_name: fisco-bcos-dvrc-node2
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: python3 -m blockchain.blockchain_client --node-id node2
+
+  bcos-node3:
+    image: python:3.11-slim
+    container_name: fisco-bcos-dvrc-node3
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: python3 -m blockchain.blockchain_client --node-id node3

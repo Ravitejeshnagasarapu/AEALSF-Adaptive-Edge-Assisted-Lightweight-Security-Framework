@@ -1,0 +1,101 @@
+[
+  {
+    "name": "registerDevice",
+    "type": "function",
+    "selector": "0x28c5be3b",
+    "signature": "registerDevice(string,string,string,address,bytes32,bytes32)",
+    "inputs": [
+      {
+        "name": "deviceId",
+        "type": "string"
+      },
+      {
+        "name": "deviceName",
+        "type": "string"
+      },
+      {
+        "name": "deviceDescription",
+        "type": "string"
+      },
+      {
+        "name": "walletAddress",
+        "type": "address"
+      },
+      {
+        "name": "nizkPkFingerprint",
+        "type": "bytes32"
+      },
+      {
+        "name": "hePublicKeyHash",
+        "type": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "bytes32",
+        "name": "uniqueIdHash"
+      }
+    ]
+  },
+  {
+    "name": "verifyDeviceFingerprint",
+    "type": "function",
+    "selector": "0x8d295f7f",
+    "signature": "verifyDeviceFingerprint(string,bytes32)",
+    "inputs": [
+      {
+        "name": "deviceId",
+        "type": "string"
+      },
+      {
+        "name": "candidateFingerprint",
+        "type": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "bool",
+        "name": "result"
+      }
+    ]
+  },
+  {
+    "name": "updateDeviceReputationAndState",
+    "type": "function",
+    "selector": "0x5a844a1e",
+    "signature": "updateDeviceReputationAndState(string,uint256,DeviceState)",
+    "inputs": [
+      {
+        "name": "deviceId",
+        "type": "string"
+      },
+      {
+        "name": "newReputationScore",
+        "type": "uint256"
+      },
+      {
+        "name": "newState",
+        "type": "DeviceState"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "getDevice",
+    "type": "function",
+    "selector": "0x4ce4935e",
+    "signature": "getDevice(string)",
+    "inputs": [
+      {
+        "name": "deviceId",
+        "type": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "DeviceRecord",
+        "name": "memory"
+      }
+    ]
+  }
+]

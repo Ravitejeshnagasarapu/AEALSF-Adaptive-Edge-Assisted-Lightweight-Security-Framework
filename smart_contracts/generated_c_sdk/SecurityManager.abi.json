@@ -1,0 +1,71 @@
+[
+  {
+    "name": "authorizeEdgeNode",
+    "type": "function",
+    "selector": "0x8abf5f4c",
+    "signature": "authorizeEdgeNode(string,bytes32)",
+    "inputs": [
+      {
+        "name": "edgeNodeId",
+        "type": "string"
+      },
+      {
+        "name": "publicTokenHash",
+        "type": "bytes32"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "recordNIZKAuthentication",
+    "type": "function",
+    "selector": "0x3016f787",
+    "signature": "recordNIZKAuthentication(string,bytes32,bytes32,uint256,bool)",
+    "inputs": [
+      {
+        "name": "deviceId",
+        "type": "string"
+      },
+      {
+        "name": "proofHash",
+        "type": "bytes32"
+      },
+      {
+        "name": "nonceHash",
+        "type": "bytes32"
+      },
+      {
+        "name": "ttlSeconds",
+        "type": "uint256"
+      },
+      {
+        "name": "r1csVerified",
+        "type": "bool"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "bool",
+        "name": "result"
+      }
+    ]
+  },
+  {
+    "name": "isDeviceAuthenticated",
+    "type": "function",
+    "selector": "0x3657b730",
+    "signature": "isDeviceAuthenticated(string)",
+    "inputs": [
+      {
+        "name": "deviceId",
+        "type": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "bool",
+        "name": "result"
+      }
+    ]
+  }
+]

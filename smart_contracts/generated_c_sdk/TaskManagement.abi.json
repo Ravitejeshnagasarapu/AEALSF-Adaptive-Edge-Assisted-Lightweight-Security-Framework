@@ -1,0 +1,96 @@
+[
+  {
+    "name": "createTask",
+    "type": "function",
+    "selector": "0x137dcceb",
+    "signature": "createTask(string,string,string,ExecutionMode,bytes32)",
+    "inputs": [
+      {
+        "name": "taskId",
+        "type": "string"
+      },
+      {
+        "name": "deviceId",
+        "type": "string"
+      },
+      {
+        "name": "assignedNodeId",
+        "type": "string"
+      },
+      {
+        "name": "mode",
+        "type": "ExecutionMode"
+      },
+      {
+        "name": "inputPayloadHash",
+        "type": "bytes32"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "submitTaskResult",
+    "type": "function",
+    "selector": "0x0435cbf3",
+    "signature": "submitTaskResult(string,string,bytes32,bytes32)",
+    "inputs": [
+      {
+        "name": "taskId",
+        "type": "string"
+      },
+      {
+        "name": "executorNodeId",
+        "type": "string"
+      },
+      {
+        "name": "resultPayloadHash",
+        "type": "bytes32"
+      },
+      {
+        "name": "edgeReceiptSignatureHash",
+        "type": "bytes32"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "verifyRetrievedResult",
+    "type": "function",
+    "selector": "0xfd53b628",
+    "signature": "verifyRetrievedResult(string,bytes32)",
+    "inputs": [
+      {
+        "name": "taskId",
+        "type": "string"
+      },
+      {
+        "name": "candidateResultHash",
+        "type": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "bool",
+        "name": "result"
+      }
+    ]
+  },
+  {
+    "name": "getTask",
+    "type": "function",
+    "selector": "0xe1b08a5c",
+    "signature": "getTask(string)",
+    "inputs": [
+      {
+        "name": "taskId",
+        "type": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "TaskRecord",
+        "name": "memory"
+      }
+    ]
+  }
+]
